@@ -6,14 +6,17 @@ let routes = [{
         },
         component: 'layout',
         children: [{
+                meta: { title: '后台首页' },
                 component: 'index/index'
             },
-            {
+            {   
+                meta: { title: '商品列表' },
                 component: 'shop/goods/list'
             }
         ]
     },
-    {
+    {   
+        meta: { title: '登录页' },
         component: 'login/index'
     },
 
@@ -29,6 +32,7 @@ let routes = [{
     }
 ]
 
+// 获取路由信息方法
 let getRoutes = () => { 
         createRoute(routes)
         return routes

@@ -19,7 +19,9 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   Backtop,
-  Card
+  Card,
+  Table,
+  TableColumn
 } from 'element-ui'
 
 import './plugins/element.js'
@@ -41,6 +43,8 @@ Vue.use(Row)
   .use(BreadcrumbItem)
   .use(Backtop)
   .use(Card)
+  .use(Table)
+  .use(TableColumn)
 import router from '@/router.js'
 
 import $config from '@/common/config/config.js'

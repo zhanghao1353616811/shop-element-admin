@@ -1,11 +1,11 @@
 export default {
     logo: 'SHOP-ADMIN',
     navBar: {
-        active: '0',
+        active: '0', // 默认为零
         list: [{
                 id: 0,
                 name: '首页',
-                avtiveIndex: '0',
+                subActive: '0', // 默认都为零
                 subMenu: [{
                         id: 0,
                         icon: 'el-icon-s-home',
@@ -16,6 +16,7 @@ export default {
                         id: 1,
                         icon: 'el-icon-picture',
                         asideName: '相册管理',
+                        pathName: 'image'
                     },
                     {
                         id: 2,
@@ -28,7 +29,7 @@ export default {
             {
                 id: 1,
                 name: '商品',
-                avtiveIndex: '0',
+                subActive: '0', // 默认都为零
                 subMenu: [{
                     id: 1,
                     icon: 'el-icon-s-claim',

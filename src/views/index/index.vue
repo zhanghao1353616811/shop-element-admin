@@ -72,6 +72,7 @@
 <script>
   import * as echarts from 'echarts';
   export default {
+    name: 'Index',
     data() {
       return {
         totalList: [{
@@ -313,7 +314,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .card-item {
     padding: 5px;
     display: flex;
@@ -330,7 +331,7 @@
   }
 
   .desc-right {
-    margin-left: 15px;
+    margin-left: 20px;
   }
 
   .item-num {
@@ -360,11 +361,10 @@
 
   .car-item {
     display: flex;
-    justify-content: space-around;
   }
 
   .flex-width {
-    width: 22%;
+    flex: 1;
   }
 
   .tips-num {

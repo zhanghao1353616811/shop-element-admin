@@ -8,6 +8,7 @@ import {
   Header,
   Aside,
   Main,
+  Footer,
   Form,
   FormItem,
   Input,
@@ -21,7 +22,18 @@ import {
   Backtop,
   Card,
   Table,
-  TableColumn
+  TableColumn,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+  Select,
+  Option,
+  Dialog,
+  InputNumber,
+  MessageBox,
+  Upload,
+  Tag
 } from 'element-ui'
 
 import './plugins/element.js'
@@ -32,6 +44,7 @@ Vue.use(Row)
   .use(Header)
   .use(Aside)
   .use(Main)
+  .use(Footer)
   .use(Form)
   .use(FormItem)
   .use(Input)
@@ -45,15 +58,27 @@ Vue.use(Row)
   .use(Card)
   .use(Table)
   .use(TableColumn)
+  .use(Dropdown)
+  .use(DropdownMenu)
+  .use(DropdownItem)
+  .use(Button)
+  .use(Select)
+  .use(Option)
+  .use(Dialog)
+  .use(InputNumber)
+  .use(Upload)
+  .use(Tag)
 import router from '@/router.js'
 
 import $config from '@/common/config/config.js'
 
 Vue.prototype.$config = $config // 挂载config配置文件
 
-Vue.prototype.$message = Message
+Vue.prototype.$message = Message // 消息提示
+Vue.prototype.$confirm = MessageBox.confirm // 弹框
+Vue.prototype.$prompt = MessageBox.prompt
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false // 阻止启动生产消息，常用作指令
 
 new Vue({
   router,

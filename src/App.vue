@@ -12,17 +12,6 @@
 </script>
 
 <style>
-  /* 实现elementui的el-container布满全屏 =>  找到html标签、body标签，和挂载的app都给他们统一设置样式 */
-  .el-container,
-  html,
-  body,
-  #app {
-    padding: 0px;
-    margin: 0px;
-    /*统一设置高度为100%*/
-    height: 100%;
-  }
-
   /* 滚动条样式 */
   ::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, .1);

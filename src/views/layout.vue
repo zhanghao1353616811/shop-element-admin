@@ -1,5 +1,5 @@
 <template>
-    <el-container>
+    <el-container class="warp">
         <el-header class="nav-header">
             <div class="login-name">{{$config.logo}}</div>
             <el-menu :default-active="navBar.active" mode="horizontal" text-color="#fff" active-text-color="#ffd04b"
@@ -27,17 +27,18 @@
                     </el-menu-item>
                 </el-menu>
             </el-aside>
-            <el-main style="height: 100%;background-color: #f8f9fa">
+            <el-main class="main-content">
                 <el-breadcrumb class="bread-crumb" separator-class="el-icon-arrow-right" v-if="crumbArr.length > 0">
                     <el-breadcrumb-item :to="{ path: item.path }" v-for="(item, index) in crumbArr" :key="index">
                         {{item.title}}
                     </el-breadcrumb-item>
                 </el-breadcrumb>
                 <!-- 主内容 -->
+                <router-view></router-view>
+                <!-- 返回到顶部 -->
                 <el-backtop target=".el-main">
                     <i class="el-icon-top back-top"></i>
                 </el-backtop>
-                <router-view></router-view>
             </el-main>
         </el-container>
     </el-container>
@@ -57,6 +58,7 @@
         },
         watch: {
             '$route'(to, from) {
+                // 登录进来应该是首页 但是显示的上边和侧边菜单导航不是对应的首页与后台首页 界面确是后台首页
                 localStorage.setItem('navActive', JSON.stringify({
                     top: this.navBar.active || '0',
                     left: this.asideActive || '0'
@@ -87,13 +89,19 @@
             this.getRouterCrumb()
             // 刷新后初始化选中菜单
             this.initSelectMenu()
+            // 路由是index 界面显示也是后台首页 但是 菜单导航栏没有一一对应
+            if (this.$route.name === 'index') {
+                this.navBar.active = '0'
+                this.asideActive = '0'
+            }
         },
         methods: {
             handTopSel(key, keyPath) {
+                console.log(key, 'key的值');
                 this.navBar.active = key
                 // 默认选中跳转到当前激活
                 this.asideActive = '0'
-                console.log(this.asidMenu);
+                // console.log(this.asidMenu);
                 if (this.asidMenu.length > 0) {
                     this.$router.push({
                         name: this.asidMenu[this.asideActive].pathName
@@ -140,6 +148,15 @@
 </script>
 
 <style scoped>
+    .warp {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+    }
+
     .nav-header {
         display: flex;
         justify-content: space-between;
@@ -161,9 +178,16 @@
         height: 100%;
     }
 
+    .main-content {
+        height: 100%;
+        background-color: #f8f9fa;
+        position: relative;
+    }
+
     .bread-crumb {
-        margin: -20px -20px 20px -20px;
         padding: 20px;
+        margin: -20px -20px 0 -20px;
+        background-color: #fff;
         border-bottom: 1px solid #ccc;
     }
 

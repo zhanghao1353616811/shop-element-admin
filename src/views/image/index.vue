@@ -10,8 +10,8 @@
         <el-button type="success" size="mini">搜索</el-button>
       </div>
       <div>
-        <el-button type="info" size="mini" v-if="isSelImg">取消选中</el-button>
-        <el-button type="danger" size="mini" v-if="isSelImg">批量删除</el-button>
+        <!-- <el-button type="info" size="mini" v-if="item.isCheck">取消选中</el-button>
+        <el-button type="danger" size="mini" v-if="item.isCheck">批量删除</el-button> -->
         <el-button type="success" size="mini" @click.stop="creOrUpPhotos(false)">创建相册</el-button>
         <el-button type="warning" size="mini" @click.stop="uploadImage()">上传图片</el-button>
       </div>
@@ -24,10 +24,10 @@
       </el-aside>
       <el-main class="main-content">
         <div class="flex-width">
-          <el-card :class="[ isActiveImg ? 'active-img' : '', 'img-flex']" :body-style="{padding: '0px'}" shadow="hover" v-for="(item, index) in imgList"
+          <el-card :class="[ item.isCheck ? 'active-img' : '', 'img-flex']" :body-style="{padding: '0px'}" shadow="hover" v-for="(item, index) in imgList"
             :key="index">
-            <img class="img-src" :src="item.src" @click="selectImg(index)">
-            <el-tag class="tag-tips" type="danger" size="mini" v-if="isSelImg">标签五</el-tag>
+            <img class="img-src" :src="item.src" @click="chooseImg(item)">
+            <el-tag class="tag-tips" type="danger" size="mini" v-if="item.isCheck">标签五</el-tag>
             <div class="img-name">{{item.name}}</div>
             <div class="image-btn">
               <el-button class="el-icon-view" type="mini" @click="preItemImg(item)"></el-button>
@@ -87,8 +87,6 @@
         diaUpVisible: false,
         diaPreVisible: false,
         preImgSrc: '',
-        isSelImg: false,
-        isActiveImg: false,
         imgList: [],
         chooseImgList: [], 
         search: [{
@@ -123,10 +121,12 @@
       },
 
       initImgList() {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 30; i++) {
           this.imgList.push({
+            id: i,
             name: '图片' + i,
-            src: 'http://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/public/60bdc38f71928.jpg'
+            src: 'http://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/public/60c355f33ea91.jpg',
+            isCheck: false
           })
         }
       },
@@ -265,14 +265,9 @@
           });
         })
       },
-      selectImg(index) {
-        for (let i = 0; i < this.imgList.length; i++) {
-          const item = this.imgList[i];
-          if (i===index) {
-            this.isActiveImg = ! this.isActiveImg 
-            this.isSelImg = !this.isSelImg
-          }
-        }
+      chooseImg(item) {
+        console.log(item);
+       item.isCheck = !item.isCheck
       }
     }
   }
@@ -344,14 +339,16 @@
   }
 
   .flex-width {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 2px;
+    box-sizing: border-box;
+    padding-left: 13px;
   }
 
   .img-flex {
-    width: 15.8%;
-    margin: 5px;
+    width: 168px; /* 换行子元素固定像素 */
+    margin: 0 8px 10px 0px;
     cursor: pointer;
     position: relative;
   }
@@ -362,6 +359,7 @@
 
   .img-src {
     width: 100%;
+    height: 100px;
     display: block;
   }
 

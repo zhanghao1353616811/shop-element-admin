@@ -54,6 +54,7 @@
       submitForm(formData) {
         console.log(this.$refs[formData].validate((valid) => {
           if (valid) {
+            this.$router.push('index/index')
             this.$message('登录成功')
           } else {
             this.$message('登录失败')

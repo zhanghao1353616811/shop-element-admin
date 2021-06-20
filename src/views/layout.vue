@@ -2,19 +2,8 @@
   <el-container class="warp">
     <el-header class="nav-header">
       <div class="login-name">{{ $config.logo }}</div>
-      <el-menu
-        :default-active="navBar.active"
-        mode="horizontal"
-        text-color="#fff"
-        active-text-color="#ffd04b"
-        background-color="#545c64"
-        @select="handTopSel"
-      >
-        <el-menu-item
-          :index="index | numToString"
-          v-for="(item, index) in navBar.list"
-          :key="index"
-        >
+      <el-menu :default-active="navBar.active" mode="horizontal" text-color="#fff" active-text-color="#ffd04b" background-color="#545c64" @select="handTopSel">
+        <el-menu-item :index="index | numToString" v-for="(item, index) in navBar.list" :key="index">
           {{ item.name }}
         </el-menu-item>
         <el-submenu index="7">
@@ -27,37 +16,18 @@
         </el-submenu>
       </el-menu>
     </el-header>
-    <el-container>
+    <el-container style="height: 100%">
       <el-aside width="200px">
-        <el-menu
-          class="aside-menu"
-          :default-active="asideActive"
-          text-color="#303133"
-          active-text-color="green"
-          background-color="#fff"
-          @select="handLeftSel"
-        >
-          <el-menu-item
-            :index="index | numToString"
-            v-for="(item, index) in asidMenu"
-            :key="index"
-          >
+        <el-menu class="aside-menu" :default-active="asideActive" text-color="#303133" active-text-color="green" background-color="#fff" @select="handLeftSel">
+          <el-menu-item :index="index | numToString" v-for="(item, index) in asidMenu" :key="index">
             <i :class="item.icon"></i>
             <span slot="title">{{ item.asideName }}</span>
           </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main class="main-content">
-        <el-breadcrumb
-          class="bread-crumb"
-          separator-class="el-icon-arrow-right"
-          v-if="crumbArr.length > 0"
-        >
-          <el-breadcrumb-item
-            :to="{ path: item.path }"
-            v-for="(item, index) in crumbArr"
-            :key="index"
-          >
+        <el-breadcrumb class="bread-crumb" separator-class="el-icon-arrow-right" v-if="crumbArr.length > 0">
+          <el-breadcrumb-item :to="{ path: item.path }" v-for="(item, index) in crumbArr" :key="index">
             {{ item.title }}
           </el-breadcrumb-item>
         </el-breadcrumb>
@@ -92,7 +62,6 @@ export default {
           let i = item.subMenu.findIndex((v) => {
             return v.pathName === to.name;
           });
-
           if (i !== -1) {
             this.navBar.active = index.toString();
             this.asideActive = i.toString();
@@ -229,6 +198,7 @@ export default {
   height: 100%;
   background-color: #f8f9fa;
   position: relative;
+  padding-bottom: 80px;
 }
 
 .bread-crumb {

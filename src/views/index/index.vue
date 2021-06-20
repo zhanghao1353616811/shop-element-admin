@@ -207,7 +207,7 @@
         ],
         option: {
           title: {
-            text: '堆叠区域图'
+            text: ''
           },
           tooltip: {
             trigger: 'axis',

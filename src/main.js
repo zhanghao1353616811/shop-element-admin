@@ -33,7 +33,8 @@ import {
   InputNumber,
   MessageBox,
   Upload,
-  Tag
+  Tag,
+  Pagination
 } from 'element-ui'
 
 import './plugins/element.js'
@@ -68,6 +69,7 @@ Vue.use(Row)
   .use(InputNumber)
   .use(Upload)
   .use(Tag)
+  .use(Pagination)
 import router from '@/router.js'
 
 import $config from '@/common/config/config.js'

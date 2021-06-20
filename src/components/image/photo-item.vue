@@ -2,7 +2,7 @@
     <div :class="[isActive ? 'active-style' : '', '']" @click.stop="$emit('click', index)">
         <div>{{item.name}}</div>
         <el-dropdown class="drop-down">
-            <span>{{item.num}}
+            <span class="drop-btn">{{item.num}}
                 <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
@@ -37,5 +37,10 @@
         color: #67C23A;
         background-color: #f0f9eb;
         border-color: #c2e7b0;
+    }
+    .drop-btn {
+        border: 1px solid #ccc;
+        background-color: #fff;
+        padding: 4px 8px;
     }
 </style>

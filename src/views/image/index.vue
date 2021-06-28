@@ -27,19 +27,21 @@
             <img class="img-src" :src="item.src" @click="chooseImage(item)" />
             <el-tag class="tag-tips" type="danger" size="mini" v-if="item.isCheck">{{ item.checkOrder }}</el-tag>
             <div class="img-name">{{ item.name }}</div>
-            <div class="image-btn">
-              <el-button class="el-icon-view" type="mini" @click="preItemImg(item)"></el-button>
-              <el-button class="el-icon-edit img-btn" type="mini" @click="openImgName(item)"></el-button>
-              <el-button class="el-icon-delete img-btn" type="mini" @click="delImg({index})"></el-button>
-            </div>
+            <el-button-group class="image-btn">
+              <el-button size="mini" icon="el-icon-view" @click="preItemImg(item)"></el-button>
+              <el-button size="mini" icon="el-icon-edit" @click="openImgName(item)"></el-button>
+              <el-button size="mini" icon="el-icon-delete" @click="delImg({index})"></el-button>
+            </el-button-group>
           </el-card>
         </div>
       </el-main>
     </el-container>
     <el-footer class="footer-content">
-      <div class="foot-btn">
-        <el-button size="mini">上一页</el-button>
-        <el-button size="mini">下一页</el-button>
+      <div  class="foot-btn">
+        <el-button-group>
+          <el-button size="mini" icon="el-icon-top">上一页</el-button>
+          <el-button size="mini" icon="el-icon-bottom">下一页</el-button>
+        </el-button-group>
       </div>
       <div class="foot-pag">
         <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[100,200,300,400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400"></el-pagination>
@@ -417,13 +419,13 @@ export default {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  box-sizing: border-box;
-  padding-left: 16px;
+  margin-left: 8px;
 }
 
 .img-flex {
-  width: 165px; /* 换行子元素固定像素 */
-  margin: 0 8px 10px 0px;
+  width: 170px; /* 换行则子元素为固定像素 */
+  margin: 0 10px 10px 0px;
+  box-sizing: border-box;
   cursor: pointer;
   position: relative;
 }
@@ -434,7 +436,7 @@ export default {
 
 .img-src {
   width: 100%;
-  height: 100px;
+  height: 90px;
   display: block;
 }
 
@@ -455,10 +457,6 @@ export default {
   display: flex;
   justify-content: center;
   margin: 7px 0;
-}
-
-.img-btn {
-  margin-left: 0;
 }
 
 .footer-content {

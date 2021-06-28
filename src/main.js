@@ -27,6 +27,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
+  ButtonGroup,
   Select,
   Option,
   Dialog,
@@ -34,7 +35,10 @@ import {
   MessageBox,
   Upload,
   Tag,
-  Pagination
+  Pagination,
+  Tabs,
+  TabPane,
+  Image
 } from 'element-ui'
 
 import './plugins/element.js'
@@ -63,6 +67,7 @@ Vue.use(Row)
   .use(DropdownMenu)
   .use(DropdownItem)
   .use(Button)
+  .use(ButtonGroup)
   .use(Select)
   .use(Option)
   .use(Dialog)
@@ -70,6 +75,9 @@ Vue.use(Row)
   .use(Upload)
   .use(Tag)
   .use(Pagination)
+  .use(Tabs)
+  .use(TabPane)
+  .use(Image)
 import router from '@/router.js'
 
 import $config from '@/common/config/config.js'

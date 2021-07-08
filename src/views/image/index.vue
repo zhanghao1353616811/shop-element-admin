@@ -81,6 +81,7 @@
 
 <script>
 import photoItem from "@/components/image/photo-item.vue";
+
 export default {
   components: {
     photoItem,
@@ -419,12 +420,12 @@ export default {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 8px;
+  margin: 0 0 -5px 18px;
 }
 
 .img-flex {
-  width: 170px; /* 换行则子元素为固定像素 */
-  margin: 0 10px 10px 0px;
+  width: 165px; /* 换行则子元素为固定像素 */
+  margin: 0 10px 5px 0px;
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
@@ -467,13 +468,14 @@ export default {
 }
 
 .foot-btn {
-  width: 179px;
+  width: 185px;
+  margin-left: -6px;
   border-right: 1px solid #ccc;
 }
 
 .foot-pag {
   line-height: 0px;
-  margin-left: 30px;
+  margin-left: 34px;
 }
 
 .ipt-width {

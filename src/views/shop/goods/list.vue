@@ -5,8 +5,10 @@
     </el-tabs>
     <search-button ref="searchButton" placeholder="要搜索的商品名称" @search="searchEvent">
       <template #left>
-        <el-button type="success" size="mini">发布商品</el-button>
-        <el-button type="danger" size="mini">批量删除</el-button>
+        <router-link :to="{name: 'shop_goods_create'}">
+          <el-button type="success" size="mini">发布商品</el-button>
+        </router-link>
+        <el-button class="del-goods" type="danger" size="mini">批量删除</el-button>
       </template>
       <template #form>
         <el-form class="for-item" :inline="true" ref="form" :model="searchForm">
@@ -34,9 +36,9 @@
             <el-image class="goods-img" :src="scope.row.url"></el-image>
             <div class="goods-right">
               <div class="goods-name">{{scope.row.title}}</div>
-              <div class="goods-type">分类:{{scope.row.type}}</div>
-              <div class="goods-date">时间:{{scope.row.date}}</div>
-            </div>
+              <div class="goods-type">分类:&nbsp;{{scope.row.type}}</div>
+              <div class="goods-date">时间:&nbsp;{{scope.row.date}}</div>
+            </div>&nbsp;
           </div>
         </template>
       </el-table-column>
@@ -71,6 +73,7 @@
 
 <script>
 import searchButton from "@/components/common/search-button.vue";
+
 export default {
   components: {
     searchButton,
@@ -159,14 +162,14 @@ export default {
       }
     },
     changeStatus(row) {
-      row.status = row.status === 1 ? 0 : 1
+      row.status = row.status === 1 ? 0 : 1;
       console.log(row);
     },
     editTableItem(row) {
       console.log(row);
     },
     delTableItem(index) {
-      this.tableData[this.activeIndex].list.splice(index, 1)
+      this.tableData[this.activeIndex].list.splice(index, 1);
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
@@ -179,6 +182,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+.del-goods {
+  margin-left: 10px;
+}
 .for-item {
   display: flex;
   align-items: center;
@@ -189,7 +195,7 @@ export default {
 
 .table-content {
   width: 100%;
-  margin: 20px 0 60px 0;
+  margin: 20px 0 120px 0;
   .goods-info {
     display: flex;
     justify-content: space-around;
@@ -201,7 +207,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      align-items: start;
+      align-items: flex-start;
     }
   }
   .status-fail {

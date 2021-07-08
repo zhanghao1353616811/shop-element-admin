@@ -26,6 +26,7 @@
         </el-menu>
       </el-aside>
       <el-main class="main-content">
+        <!-- 面包屑 -->
         <el-breadcrumb class="bread-crumb" separator-class="el-icon-arrow-right" v-if="crumbArr.length > 0">
           <el-breadcrumb-item :to="{ path: item.path }" v-for="(item, index) in crumbArr" :key="index">
             {{ item.title }}
@@ -198,7 +199,6 @@ export default {
   height: 100%;
   background-color: #f8f9fa;
   position: relative;
-  padding-bottom: 80px;
 }
 
 .bread-crumb {

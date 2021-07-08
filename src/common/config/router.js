@@ -16,6 +16,10 @@ let routes = [{
             {   
                 meta: { title: '商品列表' },
                 component: 'shop/goods/list'
+            },
+            {   
+                meta: { title: '商品发布' },
+                component: 'shop/goods/create'
             }
         ]
     },

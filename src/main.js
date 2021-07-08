@@ -38,7 +38,11 @@ import {
   Pagination,
   Tabs,
   TabPane,
-  Image
+  Image,
+  Cascader,
+  Radio,
+  RadioGroup,
+  RadioButton
 } from 'element-ui'
 
 import './plugins/element.js'
@@ -78,12 +82,16 @@ Vue.use(Row)
   .use(Tabs)
   .use(TabPane)
   .use(Image)
-import router from '@/router.js'
+  .use(Cascader)
+  .use(Radio)
+  .use(RadioGroup)
+  .use(RadioButton)
 
+import router from '@/router.js'
 import $config from '@/common/config/config.js'
+import store from '@/store/index.js'
 
 Vue.prototype.$config = $config // 挂载config配置文件
-
 Vue.prototype.$message = Message // 消息提示
 Vue.prototype.$confirm = MessageBox.confirm // 弹框
 Vue.prototype.$prompt = MessageBox.prompt
@@ -92,5 +100,6 @@ Vue.config.productionTip = false // 阻止启动生产消息，常用作指令
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

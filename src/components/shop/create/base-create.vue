@@ -1,41 +1,41 @@
 <template>
   <el-form label-width="70px">
     <el-form-item label="活动名称">
-      <el-input class="form-input" :value="name" @input="vModal('name', $event)" placeholder="请输入商品名称，不能超过60个字符"></el-input>
+      <el-input class="form-input" :value="name" @input="vModel('name', $event)" placeholder="请输入商品名称，不能超过60个字符"></el-input>
     </el-form-item>
     <el-form-item label="商品分类">
-      <el-cascader :value="category" @input="vModal('category', $event)" :options="options"></el-cascader>
+      <el-cascader :value="category" @input="vModel('category', $event)" :options="options"></el-cascader>
     </el-form-item>
     <el-form-item label="商品描述">
-      <el-input class="form-input" type="textarea" :value="desc" @input="vModal('desc', $event)" placeholder="选填，商品卖点简述，例如：此款商品美观大方 性价比较高 不容错过" :rows="3"></el-input>
+      <el-input class="form-input" type="textarea" :value="desc" @input="vModel('desc', $event)" placeholder="选填，商品卖点简述，例如：此款商品美观大方 性价比较高 不容错过" :rows="3"></el-input>
     </el-form-item>
     <el-form-item label="商品单位">
-      <el-input class="form-input" :value="unit" @input="vModal('unit', $event)" placeholder="请输入商品单位"></el-input>
+      <el-input class="form-input" :value="unit" @input="vModel('unit', $event)" placeholder="请输入商品单位"></el-input>
     </el-form-item>
     <el-form-item label="总库存">
-      <el-input class="form-input" type="number" :value="stock" @input="vModal('stock', $event)" placeholder="总库存">
+      <el-input class="form-input" type="number" :value="stock" @input="vModel('stock', $event)" placeholder="总库存">
         <template slot="append">件</template>
       </el-input>
     </el-form-item>
     <el-form-item label="库存预警">
-      <el-input class="form-input" type="number" :value="stockWarn" @input="vModal('stockWarn', $event)" placeholder="库存预警">
+      <el-input class="form-input" type="number" :value="stockWarn" @input="vModel('stockWarn', $event)" placeholder="库存预警">
         <template slot="append">件</template>
       </el-input>
     </el-form-item>
     <el-form-item label="库存显示">
-      <el-radio-group :value="stockShow" @input="vModal('stockShow', $event)">
-        <el-radio label="1" border>是</el-radio>
-        <el-radio label="0" border>否</el-radio>
+      <el-radio-group :value="stockShow" @input="vModel('stockShow', $event)">
+        <el-radio :label="1" border>是</el-radio>
+        <el-radio :label="0" border>否</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item label="是否上架">
-      <el-radio-group :value="status" @input="vModal('status', $event)">
-        <el-radio label="1" border>立刻上架</el-radio>
-        <el-radio label="0" border>放入仓库</el-radio>
+      <el-radio-group :value="status" @input="vModel('status', $event)">
+        <el-radio :label="1" border>立刻上架</el-radio>
+        <el-radio :label="0" border>放入仓库</el-radio>
       </el-radio-group>
     </el-form-item>
     <el-form-item label="运费模板">
-      <el-select :value="express" @input="vModal('express', $event)">
+      <el-select :value="express" @input="vModel('express', $event)">
         <el-option v-for="(item, index) in expreOptions" :key="index" :label="item.label" :value="item.value"></el-option>
       </el-select>
     </el-form-item>
@@ -105,15 +105,15 @@ export default {
     }),
   },
   methods: {
-    ...mapMutations(['vModalState']),
-    vModal(key, value) {
-      this.vModalState({ key, value });
+    ...mapMutations(['vModelState']),
+    vModel(key, value) {
+      this.vModelState({ key, value });
     },
   },
 };
 </script>
 
-<style lang="less">
+<style scoped>
 .form-input {
   width: 40%;
 }

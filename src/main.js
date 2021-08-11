@@ -42,7 +42,8 @@ import {
   Cascader,
   Radio,
   RadioGroup,
-  RadioButton
+  RadioButton,
+  ColorPicker
 } from 'element-ui'
 
 import './plugins/element.js'
@@ -86,10 +87,14 @@ Vue.use(Row)
   .use(Radio)
   .use(RadioGroup)
   .use(RadioButton)
+  .use(ColorPicker)
 
 import router from '@/router.js'
 import $config from '@/common/config/config.js'
 import store from '@/store/index.js'
+
+import VueDND from 'awe-dnd'
+Vue.use(VueDND)
 
 Vue.prototype.$config = $config // 挂载config配置文件
 Vue.prototype.$message = Message // 消息提示

@@ -18,7 +18,7 @@
     </el-header>
     <el-container class="main-container">
       <el-aside class="aside-content" width="200px">
-        <photo-item class="aside-li" v-for="(item, index) in photos" :key="index" :item="item" :index="index" :isActive="activeIndex === index" @click="clickPhotosItem" @update="creOrUpPhotos" @del="delPhotos">
+        <photo-item class="aside-li" v-for="(item, index) in photos" :key="index" :item="item" :index="index" :showOptions="true" :isActive="activeIndex === index" @click="clickPhotosItem" @update="creOrUpPhotos" @del="delPhotos">
         </photo-item>
       </el-aside>
       <el-main class="main-content">
@@ -37,14 +37,15 @@
       </el-main>
     </el-container>
     <el-footer class="footer-content">
-      <div  class="foot-btn">
+      <div class="foot-btn">
         <el-button-group>
           <el-button size="mini" icon="el-icon-top">上一页</el-button>
           <el-button size="mini" icon="el-icon-bottom">下一页</el-button>
         </el-button-group>
       </div>
       <div class="foot-pag">
-        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[100,200,300,400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400"></el-pagination>
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[100,200,300,400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
+        </el-pagination>
       </div>
     </el-footer>
     <!-- 修改创建相册 -->
@@ -111,11 +112,13 @@ export default {
       },
     };
   },
+
   computed: {
     photoTitle() {
       return this.isUpdateIndex > -1 ? "修改相册" : "创建相册";
     },
   },
+
   created() {
     this.initPhotos();
     this.initImgList();
@@ -137,7 +140,7 @@ export default {
         this.imgList.push({
           id: i,
           name: "图片" + i,
-          src: "http://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/public/60c355f33ea91.jpg",
+          src: "https://tangzhe123-com.oss-cn-shenzhen.aliyuncs.com/Appstatic/qsbk/demo/datapic/27.jpg",
           isCheck: false,
           checkOrder: 0, // 序号
         });
@@ -198,11 +201,13 @@ export default {
       this.photos = setArry;
       this.dialogFormVisible = false;
     },
+
     // 修改相册
     updatePhotos() {
       this.photos[this.isUpdateIndex].name = this.photoData.name;
       this.photos[this.isUpdateIndex].order = this.photoData.order;
     },
+
     // 删除相册
     delPhotos(index) {
       this.$confirm("是否确定删除相册", "提示", {
@@ -225,13 +230,17 @@ export default {
           });
         });
     },
+
     uploadImage() {
       this.diaUpVisible = true;
     },
+
     preItemImg(Obj) {
       this.diaPreVisible = true;
       this.preImgSrc = Obj.src;
     },
+
+    // 修改图片
     openImgName(Obj) {
       this.$prompt("请输入新名称", "提示", {
         confirmButtonText: "确定",
@@ -258,6 +267,7 @@ export default {
           });
         });
     },
+
     // 删除图片
     delImg(Obj) {
       this.$confirm(Obj.all ? "是否删除选中图片?" : "是否删除该图片?", "提示", {
@@ -287,6 +297,7 @@ export default {
           });
         });
     },
+
     // 选中图片
     chooseImage(item) {
       // 选中
@@ -324,6 +335,7 @@ export default {
       // 重置序号
       this.checkOrder = 0;
     },
+
     // 取消所有选中
     cancelChoose() {
       this.imgList.forEach((item) => {
@@ -340,9 +352,11 @@ export default {
         }
       });
     },
+
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
+
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
@@ -437,8 +451,6 @@ export default {
 
 .img-src {
   width: 100%;
-  height: 90px;
-  display: block;
 }
 
 .tag-tips {

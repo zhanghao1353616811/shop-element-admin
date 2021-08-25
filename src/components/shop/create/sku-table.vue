@@ -21,32 +21,25 @@
           <img class="sku-image" v-else :src="item.image" @click="chooseImage(item)">
         </td>
         <td class="table-box">
-          <el-input class="form-input" type="number" v-model="item.salePrice">
-          </el-input>
+          <el-input-number v-model="item.salePrice" size="small" controls-position="right"></el-input-number>
         </td>
         <td class="table-box">
-          <el-input class="form-input" type="number" v-model="item.markPrice">
-          </el-input>
+          <el-input-number v-model="item.markPrice" size="small" controls-position="right"></el-input-number>
         </td>
         <td class="table-box">
-          <el-input class="form-input" type="number" v-model="item.costPrice">
-          </el-input>
+          <el-input-number v-model="item.costPrice" size="small" controls-position="right"></el-input-number>
         </td>
         <td class="table-box">
-          <el-input class="form-input" type="number" v-model="item.stock">
-          </el-input>
+          <el-input-number v-model="item.stock" size="small" controls-position="right"></el-input-number>
         </td>
         <td class="table-box">
-          <el-input class="form-input" type="number" v-model="item.volume">
-          </el-input>
+          <el-input-number v-model="item.volume" size="small" controls-position="right"></el-input-number>
         </td>
         <td class="table-box">
-          <el-input class="form-input" type="number" v-model="item.weight">
-          </el-input>
+          <el-input-number v-model="item.weight" size="small" controls-position="right"></el-input-number>
         </td>
         <td class="table-box">
-          <el-input class="form-input" type="text" v-model="item.code">
-          </el-input>
+          <el-input type="text" size="small" v-model="item.code"></el-input>
         </td>
       </tr>
     </tbody>
@@ -75,14 +68,13 @@ export default {
   },
   mounted() {
     this.tableList = this.tableData;
-    // console.log(this.tableList);
   },
   methods: {
     chooseImage(item) {
-      this.app.chooseImg((res)=>{
-        item.image = res[0].src
-      }, 1)
-    }
+      this.app.chooseImg((res) => {
+        item.image = res[0].src;
+      }, 1);
+    },
   },
 };
 </script>
@@ -95,11 +87,14 @@ export default {
   text-align: center;
   .sku-img {
     width: 50px;
-    margin-left: 27px;
+    margin-left: 20px;
     border: 1px dashed #ccc;
   }
   .sku-image {
     width: 100px;
+  }
+  /deep/ .el-input-number--small {
+    width: 105px;
   }
 }
 </style>

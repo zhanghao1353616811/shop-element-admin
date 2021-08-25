@@ -1,4 +1,90 @@
 import Vue from 'vue'
-import { Button } from 'element-ui'
 
-Vue.use(Button)
+import {
+    Row,
+    Col,
+    Container,
+    Header,
+    Aside,
+    Main,
+    Footer,
+    Form,
+    FormItem,
+    Input,
+    Message,
+    Menu,
+    MenuItem,
+    Submenu,
+    Avatar,
+    Breadcrumb,
+    BreadcrumbItem,
+    Backtop,
+    Card,
+    Table,
+    TableColumn,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Button,
+    ButtonGroup,
+    Select,
+    Option,
+    Dialog,
+    InputNumber,
+    MessageBox,
+    Upload,
+    Tag,
+    Pagination,
+    Tabs,
+    TabPane,
+    Image,
+    Cascader,
+    Radio,
+    RadioGroup,
+    RadioButton,
+    ColorPicker
+} from 'element-ui'
+
+Vue.use(Row)
+    .use(Col)
+    .use(Container)
+    .use(Header)
+    .use(Aside)
+    .use(Main)
+    .use(Footer)
+    .use(Form)
+    .use(FormItem)
+    .use(Input)
+    .use(Menu)
+    .use(MenuItem)
+    .use(Submenu)
+    .use(Avatar)
+    .use(Breadcrumb)
+    .use(BreadcrumbItem)
+    .use(Backtop)
+    .use(Card)
+    .use(Table)
+    .use(TableColumn)
+    .use(Dropdown)
+    .use(DropdownMenu)
+    .use(DropdownItem)
+    .use(Button)
+    .use(ButtonGroup)
+    .use(Select)
+    .use(Option)
+    .use(Dialog)
+    .use(InputNumber)
+    .use(Upload)
+    .use(Tag)
+    .use(Pagination)
+    .use(Tabs)
+    .use(TabPane)
+    .use(Image)
+    .use(Cascader)
+    .use(Radio)
+    .use(RadioGroup)
+    .use(RadioButton)
+    .use(ColorPicker)
+
+Vue.prototype.$message = Message // 消息提示
+Vue.prototype.$confirm = MessageBox.confirm // 弹框

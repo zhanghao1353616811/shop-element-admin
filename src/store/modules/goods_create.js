@@ -24,35 +24,41 @@ export default {
             // 规格属性列表
             list: [
                 {
-                    name: '黄色',
+                    id: 0,
+                    name: '黑色',
                     image: '',
-                    color: ''
+                    color: '',
+                    isCheck: false
                 },
                 {
+                    id: 1,
                     name: '红色',
                     image: '',
-                    color: ''
+                    color: '',
+                    isCheck: false
                 }
             ]
         },
         {
-            name: '类型', // 规格名称
+            name: '尺寸', // 规格名称
             type: 0, // 规格类型 0无 1颜色 2图片
             // 规格属性列表
             list: [
                 {
-                    name: '手持',
+                    id: 2,
+                    name: 'XL',
                     image: '',
-                    color: ''
+                    color: '',
+                    isCheck: false
                 },
                 {
-                    name: '脚踏',
+                    id: 3,
+                    name: 'XXL',
                     image: '',
-                    color: ''
-                }
-            ]
-        }
-        ],
+                    color: '',
+                    isCheck: false
+                }]
+        }],
         // 表头
         ths: [
             { name: "商品规格", rowspan: 1, width: "60" },
@@ -117,8 +123,8 @@ export default {
     },
     getters: {
         tableSku(state) {
-           return state.skuCard.filter(item=>{
-               return item.list.length > 0
+            return state.skuCard.filter(item => {
+                return item.list.length > 0
             })
         },
         // 获取表头

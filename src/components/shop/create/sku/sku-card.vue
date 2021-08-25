@@ -4,7 +4,7 @@
       <div class="sku-left">
         <div>规格项:</div>
         <el-input class="form-input" :value="item.name" @input="vModel('name', index, $event)" placeholder="请输入规格名称" size="mini">
-          <el-button slot="append" icon="el-icon-more"></el-button>
+          <el-button slot="append" icon="el-icon-more" @click="chooseSkusDialog"></el-button>
         </el-input>
         <el-radio-group :value="item.type" @input="vModel('type', index, $event)">
           <el-radio :label="0">无</el-radio>
@@ -34,6 +34,7 @@ export default {
   components: {
     skuCardChildren,
   },
+  inject: ["app"],
   props: {
     item: {
       type: Object,
@@ -50,9 +51,11 @@ export default {
   },
   data() {
     return {
+      // 页面只会赋值一次 后续改变不会再次 更新页面变化
       skuCardList: this.item.list,
     };
   },
+
   mounted() {
     // 拖拽
     this.$dragging.$on("dragend", (e) => {
@@ -62,6 +65,9 @@ export default {
           value: this.skuCardList,
         });
       }
+    });
+    this.$watch("item.list", (newVal, oldVal) => {
+      this.skuCardList = newVal;
     });
   },
   methods: {
@@ -77,6 +83,14 @@ export default {
     },
     sortCard(action, index) {
       this.sortSkuCard({ action, index });
+    },
+    chooseSkusDialog() {
+      this.app.choosSkus((res) => {
+        this.vModel("name", this.index, res.name);
+        this.vModel("type", this.index, res.type);
+        this.vModel("list", this.index, res.list);
+        this.skuCardList = res.list;
+      });
     },
   },
 };

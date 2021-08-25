@@ -99,14 +99,16 @@ export default {
         });
       }
       if (typeof this.callback === "function") {
+        // 解决vue的{__ob__: observer}取值问题
+        let chooseImgList = JSON.parse(JSON.stringify(this.chooseImgList));
         // 接收一个函数在传递参数过去
-        this.callback(this.chooseImgList);
+        this.callback(chooseImgList);
       }
       this.hide();
     },
 
     // 打开弹出层
-    chooseImg(callback) {
+    chooseImgDialog(callback) {
       this.callback = callback;
       this.diaUpVisible = true;
     },
@@ -379,15 +381,13 @@ export default {
 }
 
 .flex-width {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0 -5px 18px;
 }
 
 .img-flex {
-  width: 165px; /* 换行则子元素为固定像素 */
-  margin: 0 10px 5px 0px;
+  /* 换行则子元素为固定像素 */
+  margin: 6px 12px;
   box-sizing: border-box;
   cursor: pointer;
   position: relative;

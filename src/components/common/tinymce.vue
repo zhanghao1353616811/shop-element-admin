@@ -1,15 +1,14 @@
 <template>
   <div class="tinymce-box">
-    <editor v-model="myValue" :init="init" :disabled="disabled" @onClick="onClick">
-    </editor>
+    <editor v-model="myValue" :init="init" :disabled="disabled" @onClick="onClick"></editor>
   </div>
 </template>
 
 <script>
 import tinymce from "tinymce/tinymce"; // 引入tinymce主件 默认hidden，不引入不显示
 import Editor from "@tinymce/tinymce-vue"; // 引入tinymce-vue组件
-import "tinymce/themes/silver";  // 必须引入主体才能汉化和显示
-import 'tinymce/icons/default/icons';
+import "tinymce/themes/silver"; // 必须引入主体才能汉化和显示
+import "tinymce/icons/default/icons";
 // 编辑器插件plugins
 // 更多插件参考：https://www.tiny.cloud/docs/plugins/
 import "tinymce/plugins/image"; // 引入上传图片插件

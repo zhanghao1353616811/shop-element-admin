@@ -44,13 +44,16 @@ export default {
     }),
   },
   methods: {
-      ...mapMutations(['vModelState']),
-      vModel(key, value) {
-          this.vModelState({key, value})
-      }
+    ...mapMutations(["vModelState"]),
+    vModel(key, value) {
+      this.vModelState({ key, value });
+    },
   },
 };
 </script>
 
 <style>
+.form-input {
+  width: 40%;
+}
 </style>

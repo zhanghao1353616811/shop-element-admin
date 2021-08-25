@@ -105,7 +105,7 @@ export default {
     }),
   },
   methods: {
-    ...mapMutations(['vModelState']),
+    ...mapMutations(["vModelState"]),
     vModel(key, value) {
       this.vModelState({ key, value });
     },

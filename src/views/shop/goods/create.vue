@@ -30,22 +30,22 @@
           </el-form>
           <el-form label-width="70px">
             <el-form-item label="批量设置">
-              <el-button type="text">销售价</el-button>
-              <el-button type="text">市场价</el-button>
-              <el-button type="text">成本价</el-button>
-              <el-button type="text">库存</el-button>
-              <el-button type="text">体积</el-button>
-              <el-button type="text">重量</el-button>
+              <template v-if="!setSkuAllStatus">
+                <el-button type="text" v-for="(item,index) in setSkuList" :key="index" @click="openSetSkus(item)">{{item.name}}</el-button>
+              </template>
+              <template v-else>
+                <el-input-number class="ipt-number" v-model="setSkusVal" size="small" controls-position="right" :placeholder="placeholderName"></el-input-number>
+                <el-button class="set-btn" size="small" @click="setSkuStatus">设置</el-button>
+                <el-button size="small" @click="cancelSetStatus">取消</el-button>
+              </template>
             </el-form-item>
             <el-form-item label="规格设置">
-              <sku-table></sku-table>
+              <sku-table ref="skusTable"></sku-table>
             </el-form-item>
           </el-form>
         </template>
       </el-tab-pane>
-      <el-tab-pane label="商品属性">
-        商品属性
-      </el-tab-pane>
+      <el-tab-pane label="商品属性">商品属性</el-tab-pane>
       <el-tab-pane label="媒体设置">媒体设置</el-tab-pane>
       <el-tab-pane label="商品详情">
         <tinymce ref="editor" v-model="content" @onClick="onClick" />
@@ -79,6 +79,36 @@ export default {
     return {
       activeIndex: 0,
       content: "",
+      setSkusKey: "",
+      placeholderName: "",
+      setSkusVal: "",
+      setSkuAllStatus: false,
+      setSkuList: [
+        {
+          name: "销售价",
+          key: "salePrice",
+        },
+        {
+          name: "市场价",
+          key: "markPrice",
+        },
+        {
+          name: "成本价",
+          key: "costPrice",
+        },
+        {
+          name: "库存",
+          key: "stock",
+        },
+        {
+          name: "体积",
+          key: "volume",
+        },
+        {
+          name: "重量",
+          key: "weight",
+        },
+      ],
     };
   },
   computed: {
@@ -96,11 +126,29 @@ export default {
     vModel(key, value) {
       this.vModelState({ key, value });
     },
-    // 鼠标单击的事件
+    // 鼠标单击的事件 富文本编辑器
     onClick(e, editor) {
       console.log("Element clicked");
       console.log(e);
       console.log(editor);
+    },
+
+    openSetSkus(item) {
+      this.setSkuAllStatus = true;
+      this.setSkusKey = item.key;
+      this.placeholderName = item.name;
+    },
+
+    setSkuStatus() {
+      this.$refs.skusTable.tableList.forEach((item) => {
+        item[this.setSkusKey] = this.setSkusVal;
+      });
+      this.cancelSetStatus();
+    },
+
+    cancelSetStatus() {
+      this.setSkuAllStatus = false;
+      this.setSkusVal = "";
     },
   },
 };
@@ -130,5 +178,11 @@ export default {
   .btn-cancel {
     margin: 10px 0px 10px 0;
   }
+}
+.ipt-number {
+  width: 132px;
+}
+.set-btn {
+  margin-left: 10px;
 }
 </style>

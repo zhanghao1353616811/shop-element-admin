@@ -431,16 +431,13 @@ export default {
 }
 
 .flex-width {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0 -5px 18px;
 }
 
 .img-flex {
   width: 165px; /* 换行则子元素为固定像素 */
-  margin: 0 10px 5px 0px;
-  box-sizing: border-box;
+  margin: 0 0 10px 13px;
   cursor: pointer;
   position: relative;
 }

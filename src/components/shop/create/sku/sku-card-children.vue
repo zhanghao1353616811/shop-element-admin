@@ -3,7 +3,7 @@
     <div class="sku-tag">
       <div class="tag-left" v-if="type !=0">
         <!-- 颜色选择器 -->
-        <el-color-picker v-if="type === 1" v-model="item.color" size="mini"></el-color-picker>
+        <el-color-picker v-if="type === 1" size="mini" :value="item.color" @change="colorChange"></el-color-picker>
         <!-- 图片上传 -->
         <template v-else>
           <div class="sku-upload" v-if="!item.image" @click="chooseImage">
@@ -62,8 +62,13 @@ export default {
     chooseImage() {
       // 传递一个函数过去
       this.app.chooseImg((res) => {
-        this.vModel('image', res[0].src)
+        this.vModel("image", res[0].src);
       }, 1);
+    },
+
+    // 监听颜色选择器
+    colorChange(e) {
+      this.vModel("color", e);
     },
   },
 };

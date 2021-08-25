@@ -45,9 +45,9 @@ export default {
   methods: {
     // 让父组件实例调用子组件关闭方法
     closeSuperSearch() {
-      this.isSuperSearch = false
-    }
-  }
+      this.isSuperSearch = false;
+    },
+  },
 };
 </script>
 

@@ -1,105 +1,19 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import {
-  Row,
-  Col,
-  Container,
-  Header,
-  Aside,
-  Main,
-  Footer,
-  Form,
-  FormItem,
-  Input,
-  Message,
-  Menu,
-  MenuItem,
-  Submenu,
-  Avatar,
-  Breadcrumb,
-  BreadcrumbItem,
-  Backtop,
-  Card,
-  Table,
-  TableColumn,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-  ButtonGroup,
-  Select,
-  Option,
-  Dialog,
-  InputNumber,
-  MessageBox,
-  Upload,
-  Tag,
-  Pagination,
-  Tabs,
-  TabPane,
-  Image,
-  Cascader,
-  Radio,
-  RadioGroup,
-  RadioButton,
-  ColorPicker
-} from 'element-ui'
+import './plugins/element.js' // 引入element-ui组件样式
 
-import './plugins/element.js'
+import router from '@/router.js' // 引入路由
 
-Vue.use(Row)
-  .use(Col)
-  .use(Container)
-  .use(Header)
-  .use(Aside)
-  .use(Main)
-  .use(Footer)
-  .use(Form)
-  .use(FormItem)
-  .use(Input)
-  .use(Menu)
-  .use(MenuItem)
-  .use(Submenu)
-  .use(Avatar)
-  .use(Breadcrumb)
-  .use(BreadcrumbItem)
-  .use(Backtop)
-  .use(Card)
-  .use(Table)
-  .use(TableColumn)
-  .use(Dropdown)
-  .use(DropdownMenu)
-  .use(DropdownItem)
-  .use(Button)
-  .use(ButtonGroup)
-  .use(Select)
-  .use(Option)
-  .use(Dialog)
-  .use(InputNumber)
-  .use(Upload)
-  .use(Tag)
-  .use(Pagination)
-  .use(Tabs)
-  .use(TabPane)
-  .use(Image)
-  .use(Cascader)
-  .use(Radio)
-  .use(RadioGroup)
-  .use(RadioButton)
-  .use(ColorPicker)
+import $config from '@/common/config/config.js' // 引入config配置
 
-import router from '@/router.js'
-import $config from '@/common/config/config.js'
-import store from '@/store/index.js'
+import store from '@/store/index.js' // 引入vuex
 
-import VueDND from 'awe-dnd'
+import VueDND from 'awe-dnd' // 引入拖拽
+
 Vue.use(VueDND)
 
 Vue.prototype.$config = $config // 挂载config配置文件
-Vue.prototype.$message = Message // 消息提示
-Vue.prototype.$confirm = MessageBox.confirm // 弹框
-Vue.prototype.$prompt = MessageBox.prompt
 
 Vue.config.productionTip = false // 阻止启动生产消息，常用作指令
 
